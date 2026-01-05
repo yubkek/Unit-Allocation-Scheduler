@@ -1,0 +1,55 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.swp
+
+# Django
+local_settings.py
+db.sqlite3
+/media
+/staticfiles
+
+# envs and secrets
+*.env
+backend/.env
+.env
+
+# virtualenv
+venv/
+backend/venv/
+
+# Node
+node_modules/
+frontend/node_modules/
+/dist
+/frontend/dist
+
+# Build
+*.log
+*.tmp
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# Tests
+.pytest_cache/
+
+# npm
+package-lock.json
+
+# Misc
+*.bak
