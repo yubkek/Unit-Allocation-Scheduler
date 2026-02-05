@@ -1,0 +1,107 @@
+/* General Page */
+.page {
+  padding: 24px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f6f8;
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Headings */
+h1 {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Sections */
+.section {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+/* Form */
+.form-group {
+  margin-right: 15px;
+}
+
+select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-left: 6px;
+}
+
+button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #5a5a5a;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #3d3d3d;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: #e9eaed;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Cells */
+.time-cell {
+  white-space: nowrap;
+  font-weight: 500;
+  background-color: #fafafa;
+}
+
+.day-cell {
+  min-width: 180px;
+  vertical-align: top;
+}
+
+.empty-slot {
+  color: #999;
+}
+
+/* Allocation block */
+.alloc-card {
+  background: #f1f2f4;
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+}
+
+.alloc-card strong {
+  display: block;
+}

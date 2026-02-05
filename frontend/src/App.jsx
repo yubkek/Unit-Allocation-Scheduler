@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getUnits, getSlots, getAllocations, createAllocation, deleteAllocation } from "./api";
+import "./App.css";
 
 const DAYS = [
   { key: "Mon", label: "Mon" },
@@ -87,60 +88,88 @@ export default function App() {
   }
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className="page">
       <h1>Timetable Allocator (Mon–Sun)</h1>
-      <section style={{ marginBottom: 20 }}>
+
+      <section className="section">
         <h2>Create allocation</h2>
+
         <form onSubmit={handleAllocate}>
-          <label>
-            Unit: 
+          <label className="form-group">
+            Unit:
             <select value={selectedUnit} onChange={e => setSelectedUnit(e.target.value)}>
               <option value="">--select unit--</option>
-              {units.map(u => <option key={u.id} value={u.id}>{u.code} — {u.name}</option>)}
+              {units.map(u => (
+                <option key={u.id} value={u.id}>
+                  {u.code} — {u.name}
+                </option>
+              ))}
             </select>
           </label>
-          <label style={{ marginLeft: 10 }}>
-            Slot: 
+
+          <label className="form-group">
+            Slot:
             <select value={selectedSlot} onChange={e => setSelectedSlot(e.target.value)}>
               <option value="">--select slot--</option>
-              {slots.map(s => <option key={s.id} value={s.id}>{s.day} {s.start_time}-{s.end_time}</option>)}
+              {slots.map(s => (
+                <option key={s.id} value={s.id}>
+                  {s.day} {s.start_time}-{s.end_time}
+                </option>
+              ))}
             </select>
           </label>
-          <button style={{ marginLeft: 10 }} type="submit">Allocate</button>
+
+          <button type="submit">Allocate</button>
         </form>
       </section>
 
-      {loading ? <p>Loading timetable...</p> : (
-        <div style={{ overflowX: "auto" }}>
-          <table border="1" cellPadding="6">
+      {loading ? (
+        <p>Loading timetable...</p>
+      ) : (
+        <div className="table-container">
+          <table>
             <thead>
               <tr>
                 <th>Time</th>
-                {DAYS.map(d => <th key={d.key}>{d.label}</th>)}
+                {DAYS.map(d => (
+                  <th key={d.key}>{d.label}</th>
+                ))}
               </tr>
             </thead>
+
             <tbody>
               {timeRows.length === 0 ? (
-                <tr><td colSpan={8}>No slots available. Add slots via admin or API.</td></tr>
-              ) : timeRows.map((row, idx) => (
-                <tr key={idx}>
-                  <td style={{ whiteSpace: "nowrap" }}>{formatTimeRange(row)}</td>
-                  {DAYS.map(d => (
-                    <td key={d.key} style={{ minWidth: 180, verticalAlign: "top" }}>
-                      {cellAllocations(d.key, row).length === 0 ? (
-                        <small style={{ color: "#666" }}>—</small>
-                      ) : (
-                        cellAllocations(d.key, row).map(a => (
-                          <div key={a.id} style={{ marginBottom: 6 }}>
-                            <strong>{a.unit.code}</strong> — {a.unit.name}
-                            <div><button onClick={() => handleDelete(a.id)}>Unallocate</button></div>
-                          </div>
-                        ))
-                      )}
-                    </td>
-                  ))}
+                <tr>
+                  <td colSpan={8}>No slots available.</td>
                 </tr>
-              ))}
+              ) : (
+                timeRows.map((row, idx) => (
+                  <tr key={idx}>
+                    <td className="time-cell">{formatTimeRange(row)}</td>
+
+                    {DAYS.map(d => (
+                      <td key={d.key} className="day-cell">
+                        {cellAllocations(d.key, row).length === 0 ? (
+                          <small className="empty-slot">—</small>
+                        ) : (
+                          cellAllocations(d.key, row).map(a => (
+                            <div key={a.id} className="alloc-card">
+                              <strong>{a.unit.code}</strong>
+                              {a.unit.name}
+
+                              <div>
+                                <button onClick={() => handleDelete(a.id)}>
+                                  Unallocate
+                                </button>
+                              </div>
+                            </div>
+                          ))
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
