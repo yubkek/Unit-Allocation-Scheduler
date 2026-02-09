@@ -52,18 +52,40 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+# Use PostgreSQL if DB_ENGINE=postgresql (and vars set); otherwise SQLite
+_db_engine = os.getenv("DB_ENGINE", "sqlite").lower()
+if _db_engine == "postgresql":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("DB_NAME", "unit_scheduler_db"),
+            "USER": os.getenv("DB_USER", "unit_scheduler"),
+            "PASSWORD": os.getenv("DB_PASSWORD", "unit_scheduler_secret"),
+            "HOST": os.getenv("DB_HOST", "localhost"),
+            "PORT": os.getenv("DB_PORT", "5432"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-REST_FRAMEWORK = {}
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
+CORS_ALLOW_CREDENTIALS = True

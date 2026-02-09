@@ -1,103 +1,42 @@
 [
-  {
-    "model": "core.unit",
-    "pk": 1,
-    "fields": {
-      "code": "COMP1010",
-      "name": "Intro to Computing",
-      "capacity": 80
-    }
-  },
-  {
-    "model": "core.unit",
-    "pk": 2,
-    "fields": {
-      "code": "MATH2000",
-      "name": "Calculus II",
-      "capacity": 120
-    }
-  },
-  {
-    "model": "core.unit",
-    "pk": 3,
-    "fields": {
-      "code": "STAT1500",
-      "name": "Statistics",
-      "capacity": 100
-    }
-  },
-
-  {
-    "model": "core.slot",
-    "pk": 1,
-    "fields": {
-      "day": "Mon",
-      "start_time": "09:00:00",
-      "end_time": "10:00:00"
-    }
-  },
-  {
-    "model": "core.slot",
-    "pk": 2,
-    "fields": {
-      "day": "Tue",
-      "start_time": "09:00:00",
-      "end_time": "10:00:00"
-    }
-  },
-  {
-    "model": "core.slot",
-    "pk": 3,
-    "fields": {
-      "day": "Wed",
-      "start_time": "09:00:00",
-      "end_time": "10:00:00"
-    }
-  },
-  {
-    "model": "core.slot",
-    "pk": 4,
-    "fields": {
-      "day": "Thu",
-      "start_time": "09:00:00",
-      "end_time": "10:00:00"
-    }
-  },
-  {
-    "model": "core.slot",
-    "pk": 5,
-    "fields": {
-      "day": "Fri",
-      "start_time": "09:00:00",
-      "end_time": "10:00:00"
-    }
-  },
-  {
-    "model": "core.slot",
-    "pk": 6,
-    "fields": {
-      "day": "Sat",
-      "start_time": "10:00:00",
-      "end_time": "11:00:00"
-    }
-  },
-  {
-    "model": "core.slot",
-    "pk": 7,
-    "fields": {
-      "day": "Sun",
-      "start_time": "10:00:00",
-      "end_time": "11:00:00"
-    }
-  },
-
-  {
-    "model": "core.allocation",
-    "pk": 1,
-    "fields": {
-      "unit": 1,
-      "slot": 1,
-      "created_at": "2026-01-05T00:00:00"
-    }
-  }
+  {"model": "core.unit", "pk": 1, "fields": {"code": "COMP2129", "name": "Data Structures and Algorithms", "capacity": 150}},
+  {"model": "core.unit", "pk": 2, "fields": {"code": "MATH2069", "name": "Mathematics 2A", "capacity": 200}},
+  {"model": "core.unit", "pk": 3, "fields": {"code": "BUSS1040", "name": "Economics for Business", "capacity": 400}},
+  {"model": "core.unit", "pk": 4, "fields": {"code": "PHYS1002", "name": "Physics 1B", "capacity": 180}},
+  {"model": "core.slot", "pk": 1, "fields": {"day": "Mon", "start_time": "09:00:00", "end_time": "10:00:00"}},
+  {"model": "core.slot", "pk": 2, "fields": {"day": "Mon", "start_time": "10:00:00", "end_time": "11:00:00"}},
+  {"model": "core.slot", "pk": 3, "fields": {"day": "Mon", "start_time": "11:00:00", "end_time": "12:00:00"}},
+  {"model": "core.slot", "pk": 4, "fields": {"day": "Mon", "start_time": "14:00:00", "end_time": "15:00:00"}},
+  {"model": "core.slot", "pk": 5, "fields": {"day": "Mon", "start_time": "15:00:00", "end_time": "16:00:00"}},
+  {"model": "core.slot", "pk": 6, "fields": {"day": "Tue", "start_time": "09:00:00", "end_time": "10:00:00"}},
+  {"model": "core.slot", "pk": 7, "fields": {"day": "Tue", "start_time": "10:00:00", "end_time": "11:00:00"}},
+  {"model": "core.slot", "pk": 8, "fields": {"day": "Tue", "start_time": "12:00:00", "end_time": "13:00:00"}},
+  {"model": "core.slot", "pk": 9, "fields": {"day": "Tue", "start_time": "14:00:00", "end_time": "15:00:00"}},
+  {"model": "core.slot", "pk": 10, "fields": {"day": "Wed", "start_time": "09:00:00", "end_time": "10:00:00"}},
+  {"model": "core.slot", "pk": 11, "fields": {"day": "Wed", "start_time": "11:00:00", "end_time": "12:00:00"}},
+  {"model": "core.slot", "pk": 12, "fields": {"day": "Wed", "start_time": "14:00:00", "end_time": "15:00:00"}},
+  {"model": "core.slot", "pk": 13, "fields": {"day": "Wed", "start_time": "15:00:00", "end_time": "16:00:00"}},
+  {"model": "core.slot", "pk": 14, "fields": {"day": "Thu", "start_time": "09:00:00", "end_time": "10:00:00"}},
+  {"model": "core.slot", "pk": 15, "fields": {"day": "Thu", "start_time": "10:00:00", "end_time": "11:00:00"}},
+  {"model": "core.slot", "pk": 16, "fields": {"day": "Thu", "start_time": "13:00:00", "end_time": "14:00:00"}},
+  {"model": "core.slot", "pk": 17, "fields": {"day": "Thu", "start_time": "15:00:00", "end_time": "16:00:00"}},
+  {"model": "core.slot", "pk": 18, "fields": {"day": "Fri", "start_time": "09:00:00", "end_time": "10:00:00"}},
+  {"model": "core.slot", "pk": 19, "fields": {"day": "Fri", "start_time": "11:00:00", "end_time": "12:00:00"}},
+  {"model": "core.slot", "pk": 20, "fields": {"day": "Fri", "start_time": "14:00:00", "end_time": "15:00:00"}},
+  {"model": "core.allocation", "pk": 1, "fields": {"unit": 1, "slot": 1, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 2, "fields": {"unit": 1, "slot": 6, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 3, "fields": {"unit": 1, "slot": 10, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 4, "fields": {"unit": 1, "slot": 14, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 5, "fields": {"unit": 2, "slot": 2, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 6, "fields": {"unit": 2, "slot": 7, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 7, "fields": {"unit": 2, "slot": 11, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 8, "fields": {"unit": 2, "slot": 18, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 9, "fields": {"unit": 3, "slot": 3, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 10, "fields": {"unit": 3, "slot": 8, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 11, "fields": {"unit": 3, "slot": 12, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 12, "fields": {"unit": 3, "slot": 19, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 13, "fields": {"unit": 4, "slot": 4, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 14, "fields": {"unit": 4, "slot": 9, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 15, "fields": {"unit": 4, "slot": 13, "created_at": "2026-01-05T00:00:00"}},
+  {"model": "core.allocation", "pk": 16, "fields": {"unit": 4, "slot": 17, "created_at": "2026-01-05T00:00:00"}}
 ]

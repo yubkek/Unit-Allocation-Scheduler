@@ -26,6 +26,44 @@ copy .env.example .env
 python manage.py migrate
 python manage.py runserver 127.0.0.1:8000
 
+**PostgreSQL + pgAdmin (optional)**
+
+To use PostgreSQL and pgAdmin instead of SQLite:
+
+1. From the project root, start PostgreSQL and pgAdmin:
+   ```powershell
+   cd Unit-Allocation-Scheduler
+   docker compose up -d
+   ```
+2. Open pgAdmin at **http://localhost:5050** and log in with:
+   - Email: `admin@admin.com`
+   - Password: `admin`
+3. In pgAdmin: **Servers → Register → Server**. Create a new server with:
+   - **General** → Name: `Unit Scheduler` (any name)
+   - **Connection**:
+     - Host: `db` (when using Docker) or `localhost`
+     - Port: `5432`
+     - Database: `unit_scheduler_db`
+     - Username: `unit_scheduler`
+     - Password: `unit_scheduler_secret`
+4. In `backend/.env` add:
+   ```
+   DB_ENGINE=postgresql
+   DB_NAME=unit_scheduler_db
+   DB_USER=unit_scheduler
+   DB_PASSWORD=unit_scheduler_secret
+   DB_HOST=localhost
+   DB_PORT=5432
+   ```
+5. Run migrations and (optional) load fixtures:
+   ```powershell
+   cd backend
+   python manage.py migrate
+   python manage.py loaddata fixtures/initial_data.json
+   ```
+
+Leave `DB_ENGINE` unset or remove the DB_* lines to keep using SQLite.
+
 Load example fixture data (optional):
 
 ```powershell

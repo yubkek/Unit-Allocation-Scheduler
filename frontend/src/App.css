@@ -7,6 +7,87 @@
   color: #333;
 }
 
+/* Header + Sign out */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #555;
+}
+
+.sign-out-btn {
+  background-color: #8b3a3a;
+}
+
+.sign-out-btn:hover {
+  background-color: #6b2a2a;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0;
+}
+
+.tab {
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: #e0e0e0;
+  color: #444;
+}
+
+.tab:hover {
+  background: #d0d0d0;
+}
+
+.tab-active {
+  background: white;
+  border-color: #ddd;
+  border-bottom: 1px solid white;
+  margin-bottom: -1px;
+  font-weight: 600;
+}
+
+/* Sign in */
+.sign-in-section {
+  max-width: 360px;
+}
+
+.sign-in-section input {
+  margin-left: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.sign-in-error {
+  color: #b33;
+  margin-top: 10px;
+  font-size: 0.95em;
+}
+
 /* Headings */
 h1 {
   margin-bottom: 20px;
