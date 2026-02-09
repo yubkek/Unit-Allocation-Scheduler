@@ -177,7 +177,7 @@ export default function App() {
         <section className="section sign-in-section">
           <h2>Sign in</h2>
           <form onSubmit={handleSignIn}>
-            <label className="form-group">
+            <label className="sign-in-form">
               Username:
               <input
                 type="text"
@@ -186,7 +186,7 @@ export default function App() {
                 autoComplete="username"
               />
             </label>
-            <label className="form-group">
+            <label className="sign-in-form">
               Password:
               <input
                 type="password"
@@ -195,7 +195,7 @@ export default function App() {
                 autoComplete="current-password"
               />
             </label>
-            <button type="submit">Sign in</button>
+            <button type="submit" style={{ marginTop: "20px", padding: "12px" }}>Sign in</button>
             {signInError && <p className="sign-in-error">{signInError}</p>}
           </form>
         </section>

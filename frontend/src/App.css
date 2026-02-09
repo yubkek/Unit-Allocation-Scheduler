@@ -112,6 +112,17 @@ h2 {
   margin-right: 15px;
 }
 
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sign-in-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
 select {
   padding: 6px 8px;
   border-radius: 6px;
