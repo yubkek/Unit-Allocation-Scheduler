@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from rest_framework import viewsets
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -38,6 +38,14 @@ def auth_me(request):
     if not request.user.is_authenticated:
         return Response({"detail": "Not authenticated."}, status=HTTP_401_UNAUTHORIZED)
     return Response({"id": request.user.pk, "username": request.user.username})
+
+
+@ensure_csrf_cookie
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def auth_csrf(request):
+    """Ensure the CSRF cookie is set for the SPA (frontend fetch uses credentials: 'include')."""
+    return Response({"detail": "CSRF cookie set"})
 
 
 @method_decorator(csrf_exempt, name="dispatch")

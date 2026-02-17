@@ -2,6 +2,7 @@ const API = {
   authLogin: "/api/auth/login/",
   authLogout: "/api/auth/logout/",
   authMe: "/api/auth/me/",
+  authCsrf: "/api/auth/csrf/",
   units: "/api/units/",
   slots: "/api/slots/",
   allocations: "/api/allocations/",
@@ -32,6 +33,13 @@ async function handleJSON(res) {
     const text = await res.text();
     throw new Error(text || res.statusText);
   }
+  return res.json();
+}
+
+export async function getCsrf() {
+  // call backend endpoint that sets the CSRF cookie (credentials included)
+  const res = await fetch(API.authCsrf, fetchOpts);
+  if (!res.ok) throw new Error(await res.text());
   return res.json();
 }
 

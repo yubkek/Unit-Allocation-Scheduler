@@ -7,6 +7,7 @@ from .views import (
     auth_login,
     auth_logout,
     auth_me,
+    auth_csrf,
 )
 
 router = DefaultRouter()
@@ -18,5 +19,6 @@ urlpatterns = [
     path("auth/login/", auth_login),
     path("auth/logout/", auth_logout),
     path("auth/me/", auth_me),
+    path("auth/csrf/", auth_csrf),
     path("", include(router.urls)),
 ]

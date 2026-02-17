@@ -21,3 +21,16 @@ class AllocationSerializer(serializers.ModelSerializer):
         model = Allocation
         fields = ["id", "unit", "slot", "unit_id", "slot_id", "created_at"]
         read_only_fields = ["id", "created_at"]
+
+    def validate(self, attrs):
+        """Prevent slot clashes: a Slot may only have one Allocation."""
+        slot = attrs.get("slot") or (self.instance.slot if self.instance else None)
+        # creation
+        if self.instance is None:
+            if Allocation.objects.filter(slot=slot).exists():
+                raise serializers.ValidationError({"slot_id": "Slot already allocated (clash)."})
+        else:
+            # update: if changing slot, ensure no other allocation occupies it
+            if "slot" in attrs and Allocation.objects.filter(slot=slot).exclude(pk=self.instance.pk).exists():
+                raise serializers.ValidationError({"slot_id": "Slot already allocated (clash)."})
+        return attrs
